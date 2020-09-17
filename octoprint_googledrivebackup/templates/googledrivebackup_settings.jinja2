@@ -1,0 +1,43 @@
+<h3>{{ _('Google Drive Backup') }} <small>{{ _('Version') }}: <span data-bind="text: settingsViewModel.settings.plugins.googledrivebackup.installed_version"></span></small></h3>
+<form class="form-horizontal" id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post" data-bind="visible: !cert_saved()">
+    <div class="control-group">
+        <label class="control-label">client_secrets.json</label>
+        <div class="controls">
+            <div class="input-prepend">
+                <span class="btn fileinput-button">
+                    <span>Browse...</span>
+                    <input id="googledrivebackup_cert_file" type="file" name="file" accept=".json">
+                </span>
+                <span class="add-on" data-bind="text: cert_file_name"></span>
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button class="btn btn-primary" data-bind="enable: !authorizing(), click: uploadCertFile"><i class="fa fa-spinner fa-spin" data-bind="visible: authorizing" style="display: none;"></i> Upload</button>
+        </div>
+    </div>
+</form>
+<div class="row-fluid" data-bind="visible: cert_saved() && !cert_authorized()" style="display: none;">
+    <div class="row-fluid">Click the below URL to authorize your client_secrets.json file. Copy/Paste the Authentication Code you receive and then press Authorize.</div>
+    <div class="row-fluid"><a href="#" target="_blank" data-bind="attr: {href: auth_url}, text: auth_url"></a></div>
+    <div class="control-group">
+        <label class="control-label">{{ _('Auth Code') }}</label>
+        <div class="controls">
+            <input class="input" type="text" data-bind="enable: !authorizing() && auth_url() !== '#' && !cert_authorized(), textInput: auth_code"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button class="btn btn-primary" data-bind="enable: !authorizing() && auth_url() !== '#' && !cert_authorized(), click: authorizeCertFile"><i class="fa fa-spinner fa-spin" data-bind="visible: authorizing" style="display: none;"></i> Authorize</button>
+        </div>
+    </div>
+</div>
+<div class="row-fluid" data-bind="visible: cert_saved() && cert_authorized()" style="display: none;">
+    <div class="row-fluid">Authorization successful. Click Delete below to clear the saved credentials.</div>
+    <div class="control-group">
+        <div class="controls">
+            <button class="btn btn-primary" data-bind="enable: cert_authorized(), click: deleteCertFiles"><i class="fa fa-spinner fa-spin" data-bind="visible: authorizing" style="display: none;"></i> Delete</button>
+        </div>
+    </div>
+</div>

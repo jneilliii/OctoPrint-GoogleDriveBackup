@@ -1,0 +1,4 @@
+include README.md
+recursive-include octoprint_googledrivebackup/templates *
+recursive-include octoprint_googledrivebackup/translations *
+recursive-include octoprint_googledrivebackup/static *
