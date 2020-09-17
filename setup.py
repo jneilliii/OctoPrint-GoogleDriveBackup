@@ -33,7 +33,7 @@ plugin_url = "https://github.com/jneilliii/OctoPrint-GoogleDriveBackup"
 plugin_license = "MIT"
 
 # Any additional requirements besides OctoPrint should be listed here
-plugin_requires = ["pydrive"]
+plugin_requires = ["PyDrive2"]
 
 ### --------------------------------------------------------------------------------------------------------------------
 ### More advanced options that you usually shouldn't have to touch follow after this point

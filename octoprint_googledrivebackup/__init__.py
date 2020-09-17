@@ -31,7 +31,7 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 		if not user_permission.can():
 			return flask.make_response("Insufficient rights", 403)
 
-		from pydrive.auth import GoogleAuth
+		from pydrive2.auth import GoogleAuth
 		config_file = "{}/client_secrets.json".format(self.get_plugin_data_folder())
 		credentials_file = "{}/credentials.json".format(self.get_plugin_data_folder())
 		if not self.gauth:
@@ -74,8 +74,8 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 	def on_event(self, event, payload):
 		if event == "plugin_backup_backup_created" and self._settings.get_boolean(["cert_authorized"]):
 			self._logger.info("{} created, will now attempt to upload to Google Drive".format(payload["path"]))
-			from pydrive.drive import GoogleDrive
-			from pydrive.auth import GoogleAuth
+			from pydrive2.drive import GoogleDrive
+			from pydrive2.auth import GoogleAuth
 			credentials_file = "{}/credentials.json".format(self.get_plugin_data_folder())
 			gauth = GoogleAuth()
 			gauth.LoadCredentialsFile(credentials_file)
