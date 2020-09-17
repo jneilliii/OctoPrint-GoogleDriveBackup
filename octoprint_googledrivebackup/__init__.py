@@ -17,7 +17,8 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 	def get_settings_defaults(self):
 		return dict(
 			cert_saved=False,
-			cert_authorized=False
+			cert_authorized=False,
+			installed_version=self._plugin_version,
 		)
 
 	##~~ SimpleApiPlugin mixin
