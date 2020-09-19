@@ -66,8 +66,6 @@ Once the Prerequisite steps above have been completed and you have downloaded yo
 - [X] ~~Improve documentation.~~
 - [ ] Delete certs instead of just clearing flags to start over.
 
----
-
 ## Get Help
 
 If you experience issues with this plugin or need assistance please use the issue tracker by clicking issues above.
@@ -75,8 +73,6 @@ If you experience issues with this plugin or need assistance please use the issu
 ## Additional Plugins
 
 Check out my other plugins [here](https://plugins.octoprint.org/by_author/#jneilliii)
-
----
 
 ## Sponsors
 - Andreas Lindermayr
