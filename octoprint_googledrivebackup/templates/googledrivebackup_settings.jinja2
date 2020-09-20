@@ -1,4 +1,5 @@
 <h3>{{ _('Google Drive Backup') }} <small>{{ _('Version') }}: <span data-bind="text: settingsViewModel.settings.plugins.googledrivebackup.installed_version"></span></small></h3>
+<div class="alert"><small>This plugin will currently not monitor your Google Drive storage usage or limit/reduce the number of backups that have already been uploaded.</small></div>
 <form class="form-horizontal" id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post" data-bind="visible: !cert_saved()">
     <div class="control-group">
         <label class="control-label">client_secrets.json</label>

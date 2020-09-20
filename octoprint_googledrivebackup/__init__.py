@@ -47,6 +47,9 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 			self._settings.save()
 
 			self.gauth.LoadClientConfigFile(config_file)
+			self.gauth.GetFlow()
+			self.gauth.flow.params.update({'access_type': 'offline'})
+			self.gauth.flow.params.update({'approval_prompt': 'force'})
 			auth_url = self.gauth.GetAuthUrl()
 			return flask.jsonify(dict(cert_saved=True, url=auth_url))
 

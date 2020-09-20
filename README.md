@@ -30,7 +30,7 @@ If you are using a version of OctoPrint older than version 1.5.0 this plugin wil
 ![screenshot](screenshots/settings_step10.png)
 11.	Click on `Create credentials` and select `OAuth client ID`. <br>
 ![screenshot](screenshots/settings_step11.png)
-12.	Select `Web Application` and then enter a name (can be anything and does not really matter) and then click `Create`. <br>
+12.	Select `Desktop App` for application type and then enter a name (can be anything and does not really matter) and then click `Create`. <br>
 ![screenshot](screenshots/settings_step12.png)
 13.	Click `OK` to the confirmation page and then use the download button ![screenshot](screenshots/settings_download.png) to save your client_secrets#####.json file. <br>
 ![screenshot](screenshots/settings_step13.png)
