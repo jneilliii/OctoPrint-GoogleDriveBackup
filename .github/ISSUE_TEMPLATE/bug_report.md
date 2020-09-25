@@ -14,4 +14,4 @@ assignees: ''
 <!-- A clear and concise description of what you expected to happen. -->
 
 **OctoPrint Version**
-<!-- Please enter your firmware and firmware version. -->
+<!-- Please enter your OctoPrint version. -->
