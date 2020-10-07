@@ -112,7 +112,18 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 				user="jneilliii",
 				repo="OctoPrint-GoogleDriveBackup",
 				current=self._plugin_version,
-
+				stable_branch=dict(
+					name="Stable",
+					branch="master",
+					comittish=["master"]
+				),
+				prerelease_branches=[
+					dict(
+						name="Release Candidate",
+						branch="rc",
+						comittish=["rc", "master"]
+					)
+				],
 				# update method: pip
 				pip="https://github.com/jneilliii/OctoPrint-GoogleDriveBackup/archive/{target_version}.zip"
 			)
