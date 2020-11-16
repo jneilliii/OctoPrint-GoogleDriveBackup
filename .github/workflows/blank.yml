@@ -37,11 +37,11 @@ jobs:
         uses: TheDoctor0/zip-release@0.4.1
         with:
           # Filename for archive
-          filename: # default is release.zip
+          filename: 'release.zip' # default is release.zip
           # Base path for archive files
-          path: # optional, default is .
+          path: '.' # optional, default is .
           # Working directory before zipping
-          directory: # optional, default is .
+          directory: './working/' # optional, default is .
           # List of excluded files / directories
           exclusions: '*.git* .editorconfig'# optional, default is 
           # Tool to use for archiving
