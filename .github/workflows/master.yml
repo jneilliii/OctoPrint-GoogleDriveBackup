@@ -20,4 +20,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         REPO_OWNER: tideline3D
         RELEASE_BRANCHES: release 
-        INITIAL_VERSION: 0.0.4 #Why are you not working
+        INITIAL_VERSION: 0.0.4 #Why are you not working - ugh
