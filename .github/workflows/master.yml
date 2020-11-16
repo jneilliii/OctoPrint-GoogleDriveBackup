@@ -18,4 +18,4 @@ jobs:
       uses: anothrNick/github-tag-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        REPO_OWNER: tideline3d
+        REPO_OWNER: tideline3D
