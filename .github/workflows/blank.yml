@@ -45,4 +45,4 @@ jobs:
           # List of excluded files / directories
           exclusions: '*.git* .editorconfig'# optional, default is 
           # Tool to use for archiving
-          type: # optional, default is zip
+          type: 'zip' # optional, default is zip
