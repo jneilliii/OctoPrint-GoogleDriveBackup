@@ -19,5 +19,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         REPO_OWNER: tideline3D
-        RELEASE_BRANCHES: master 
+        RELEASE_BRANCHES: release 
         INITIAL_VERSION: 0.0.3
