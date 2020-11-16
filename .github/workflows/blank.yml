@@ -19,15 +19,16 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Get the version
+        id: tag_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
+      - name: Build project # This would actually build your project, using zip for an example artifact
+        run: zip -r ${{ steps.tag_version.outputs.VERSION }}.zip . -x ".git/*" ".github/*" ".editorconfig" ".gitignore"
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
