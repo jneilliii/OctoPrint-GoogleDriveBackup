@@ -24,17 +24,19 @@ If you are using a version of OctoPrint older than version 1.5.0 this plugin wil
 ![screenshot](screenshots/settings_step7.png)
 8.	Select the `External` user type if you do not use Google G Suite, otherwise you can select `Internal` and click `Create`. <br>
 ![screenshot](screenshots/settings_step8.png)
-9.	Click `Save and Continue` on the remaining pages for your consent screen, and then click `Back to Dashboard`. <br>
+9.	If you don't publish your app you need to add the user email that you will be using to access Google Drive as a Test User. <br>
+![screenshot](screenshots/settings_step8b.png)
+10.	Click `Save and Continue` on the remaining pages for your consent screen, and then click `Back to Dashboard`. <br>
 ![screenshot](screenshots/settings_step9.png)
-10.	In the sidebar on the left (via ![screenshot](screenshots/settings_menu.png)), select **APIs and Services** > **Credentials** again. <br>
+11.	In the sidebar on the left (via ![screenshot](screenshots/settings_menu.png)), select **APIs and Services** > **Credentials** again. <br>
 ![screenshot](screenshots/settings_step10.png)
-11.	Click on `Create credentials` and select `OAuth client ID`. <br>
+12.	Click on `Create credentials` and select `OAuth client ID`. <br>
 ![screenshot](screenshots/settings_step11.png)
-12.	Select `Desktop App` for application type and then enter a name (can be anything and does not really matter) and then click `Create`. <br>
+13.	Select `Desktop App` for application type and then enter a name (can be anything and does not really matter) and then click `Create`. <br>
 ![screenshot](screenshots/settings_step12.png)
-13.	Click `OK` to the confirmation page and then use the download button ![screenshot](screenshots/settings_download.png) to save your client_secrets#####.json file. <br>
+14.	Click `OK` to the confirmation page and then use the download button ![screenshot](screenshots/settings_download.png) to save your client_secrets#####.json file. <br>
 ![screenshot](screenshots/settings_step13.png)
-14.	Use the downloaded client_secrets#####.json file to upload into the plugin’s settings to authorize its access to your Google Drive as described in the Configuration section below.
+15.	Use the downloaded client_secrets#####.json file to upload into the plugin’s settings to authorize its access to your Google Drive as described in the Configuration section below.
 
 ## Setup
 
