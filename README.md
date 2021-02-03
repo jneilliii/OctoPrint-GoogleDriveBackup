@@ -7,6 +7,9 @@ This plugin will automatically upload a backup upon completion to your authorize
 ### OctoPrint 1.5.0
 If you are using a version of OctoPrint older than version 1.5.0 this plugin will not work.
 
+### Python
+Due to upstream dependencies this plugin has been updated to only work in Python 3. You can either flash OctoPi 0.18 which ships with Python 3 standard or use the upgrade instructions [here](https://github.com/cp2004/Octoprint-Upgrade-To-Py3) to upgrade your instance.
+
 ### Create a Google OAuth App
 1.	Login to the [Google Developers Console](https://cloud.google.com/console) <br>
 ![screenshot](screenshots/settings_step1.png)
