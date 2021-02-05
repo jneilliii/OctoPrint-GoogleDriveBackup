@@ -1,18 +1,42 @@
-# Prerequisites
+# Introduction
 
-### OctoPrint
+This plugin will automatically upload a backup upon completion to your authorized Google Drive. In order for the plugin to work properly you will have to create a Google OAuth App to authorize access. To create your own Google OAuth app please follow the directions outlined in the Prerequisites section later in this guide.
 
-If you are using a version of OctoPrint older than version 1.5.0 this plugin will not work.
+### To-Do
 
-### Python
+* \[X\] ~~Improve documentation.~~
+* [ ] Add route hook to allow for local redirect URIs during authentication.
+* [ ] Delete certs instead of just clearing flags to start over.
+* [ ] Improve error handling, display messages in UI.
 
-Due to upstream dependencies this plugin has been updated to only work in Python 3. You can either flash OctoPi 0.18 which ships with Python 3 standard or use the upgrade instructions [here](https://github.com/cp2004/Octoprint-Upgrade-To-Py3) to upgrade your instance.
+### Get Help
 
-### Create a Google OAuth App
+If you experience issues with this plugin or need assistance please use the issue tracker by clicking [here](https://github.com/jneilliii/OctoPrint-GoogleDriveBackup/issues).
 
-Continue to the next step for detailed instructions on how to create a Google OAuth App for connecting to Google Drive by the plugin. 
+### Additional Plugins
 
+Check out my other plugins [here](https://plugins.octoprint.org/by_author/#jneilliii).
 
+### Sponsors
+
+* Andreas Lindermayr
+* [@Mearman](https://github.com/Mearman)
+* [@TxBillbr](https://github.com/TxBillbr)
+* Gerald Dachs
+* [@TheTuxKeeper](https://github.com/thetuxkeeper)
+* @tideline3d
+* [SimplyPrint](https://simplyprint.dk/)
+* [Andrew Beeman](https://github.com/Kiendeleo)
+* [Calanish](https://github.com/calanish)
+* [Will O](https://github.com/4wrxb)
+
+### Support My Efforts
+
+I programmed this plugin for fun and do my best effort to support those that have issues with it, please return the favor and leave me a tip or become a Patron if you find this plugin helpful and want me to continue future development.
+
+[![Patreon](.gitbook/assets/patreon-with-text-new.png)](https://www.patreon.com/jneilliii) [![paypal](.gitbook/assets/paypal-with-text.png)](https://paypal.me/jneilliii)
+
+No paypal.me? Send funds via PayPal to jneilliii@gmail.com. You can use [this](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=jneilliii@gmail.com) link too. But the normal PayPal fee will be deducted.
 
 
 
