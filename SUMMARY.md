@@ -1,4 +1,4 @@
 # Table of contents
 
-* [Google Drive Backup](README.md)
+* [Initial page](README.md)
 
