@@ -4,7 +4,7 @@ This plugin will automatically upload a backup upon completion to your authorize
 
 ### To-Do
 
-* [x] Improve documentation.  
+* [x] ~~Improve documentation.~~  
 * [ ] Add route hook to allow for local redirect URIs during authentication.
 * [ ] Delete certs instead of just clearing flags to start over.
 * [ ] Improve error handling, display messages in UI.
