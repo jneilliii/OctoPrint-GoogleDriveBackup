@@ -43,6 +43,14 @@
     </div>
 </div>
 <div class="row-fluid">
+    <label class="input">{{ _('Upload to Folder.') }}</label>
+    <div class="control-group">
+        <div class="controls">
+            <input type="text" data-bind="value: settingsViewModel.settings.plugins.googledrivebackup.upload_folder" />
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
     <div class="control-group">
         <div class="controls">
             <label class="checkbox">{{ _('Strip timestamp from file name.') }}<input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.googledrivebackup.strip_timestamp" /></label>

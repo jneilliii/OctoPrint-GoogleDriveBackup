@@ -21,6 +21,7 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 			cert_authorized=False,
 			installed_version=self._plugin_version,
 			strip_timestamp=False,
+			upload_folder="",
 		)
 
 	##~~ SimpleApiPlugin mixin
@@ -83,6 +84,7 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 			from pydrive2.drive import GoogleDrive
 			from pydrive2.auth import GoogleAuth
 			credentials_file = "{}/credentials.json".format(self.get_plugin_data_folder())
+			folder_id = None
 			gauth = GoogleAuth()
 			gauth.LoadCredentialsFile(credentials_file)
 			if gauth.credentials is None:
@@ -100,14 +102,33 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 			if self._settings.get_boolean(["strip_timestamp"]):
 				import re
 				filename = re.sub(r"((-[0-9]+)+\.zip$)", ".zip", filename)
-			file_list = drive.ListFile({'q': "title='{}' and trashed=false".format(filename)}).GetList()
+			if not self._settings.get(["upload_folder"]) == "":
+				folder_id = self.create_remote_folder(drive, self._settings.get(["upload_folder"]))
+			file_list = drive.ListFile({'q': "title='{}' and trashed=false and '{}' in parents".format(filename, folder_id or "root")}).GetList()
 			if len(file_list) == 1:
 				f = file_list[0]
 			else:
-				f = drive.CreateFile({'title': filename})
+				file_metadata = {"title": filename}
+				if folder_id:
+					file_metadata["parents"] = [{"id": folder_id}]
+				f = drive.CreateFile(file_metadata)
 			f.SetContentFile(payload["path"])
 			f.Upload()
 			f = None
+
+	def create_remote_folder(self, drive, folder_name):
+		folder_list = (drive.ListFile({'q': "mimeType='application/vnd.google-apps.folder' and trashed=false and title='{}'".format(folder_name)}).GetList())
+
+		if len(folder_list) == 1:
+			return folder_list[0]["id"]
+
+		file_metadata = {
+			"title": folder_name,
+			"mimeType": "application/vnd.google-apps.folder"
+		}
+		file0 = drive.CreateFile(file_metadata)
+		file0.Upload()
+		return file0["id"]
 
 	##~~ Softwareupdate hook
 
