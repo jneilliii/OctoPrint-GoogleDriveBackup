@@ -5,10 +5,17 @@ This plugin will automatically upload a backup upon completion to your authorize
 ## Prerequisites
 
 ### OctoPrint 1.5.0
-If you are using a version of OctoPrint older than version 1.5.0 this plugin will not work.
+If you are using a version of OctoPrint older than version 1.5.0, this plugin will not work.
 
-### Python
+### Dependencies
 Due to upstream dependencies this plugin has been updated to only work in Python 3. You can either flash OctoPi 0.18 which ships with Python 3 standard or use the upgrade instructions [here](https://github.com/cp2004/Octoprint-Upgrade-To-Py3) to upgrade your instance.
+
+You may also need to install some system dependencies, specifically if you manually installed OctoPrint and didn't use the OctoPi image. Known dependencies that have been reported are `Rust` and `libssl-dev`. Use the commands to below to install them.
+
+```angular2html
+sudo apt install rustc
+sudo apt install libssl-dev
+```
 
 ### Create a Google OAuth App
 1.	Login to the [Google Developers Console](https://cloud.google.com/console) <br>
@@ -69,6 +76,7 @@ Once the Prerequisite steps above have been completed and you have downloaded yo
 ## To-Do
 
 - [X] ~~Improve documentation.~~
+- [X] ~~Add custom upload folder.~~
 - [ ] Add route hook to allow for local redirect URIs during authentication.
 - [ ] Delete certs instead of just clearing flags to start over.
 - [ ] Improve error handling, display messages in UI.
