@@ -12,7 +12,7 @@ Due to upstream dependencies this plugin has been updated to only work in Python
 
 You may also need to install some system dependencies, specifically if you manually installed OctoPrint and didn't use the OctoPi image. Known dependencies that have been reported are `Rust` and `libssl-dev`. Use the commands to below to install them.
 
-```angular2html
+```
 sudo apt install rustc
 sudo apt install libssl-dev
 ```
