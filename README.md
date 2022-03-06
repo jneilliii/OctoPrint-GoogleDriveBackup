@@ -18,7 +18,7 @@ sudo apt install libssl-dev
 ```
 
 ### Create a Google OAuth App
-1.	Login to the [Google Developers Console](https://cloud.google.com/console) <br>
+1.	Login to the [Google Developers Console](https://console.cloud.google.com/) <br>
 ![screenshot](screenshots/settings_step1.png)
 2.	Create a new project giving it a name of your choice. <br>
 ![screenshot](screenshots/settings_step2.png)
