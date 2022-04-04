@@ -1,0 +1,33 @@
+---
+title: Google Drive Backup oAuth
+layout: base
+---
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Google Drive Backup</h1>
+            <label for="oAuthResults" class="form-label">Your Authentication Code</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="oAuthResults" aria-describedby="basic-addon3" placeholder="Authentication Code" readonly>
+                <button class="btn btn-outline-secondary" type="button" id="button-copy-to-clipboard"><i class="fa-solid fa-clipboard"></i></button>
+            </div>
+            <div class="alert alert-success invisible" role="alert" id="oAuthCopied">
+                Authentication code copied to clipboard.
+            </div>
+        </div>
+    </div>
+</section>
+<script type="application/javascript">
+    $(document).ready(function(){
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+        let oAuthCode = params.code;
+        $('#oAuthResults').val(oAuthCode).on('click', function() {$(this).select();});
+        $('#button-copy-to-clipboard').on('click', function(){
+            copyToClipboard($('#oAuthResults').val());
+            $('#oAuthCopied').removeClass('invisible');
+            window.setTimeout(function(){$('#oAuthCopied').addClass('invisible');},5000);
+        });
+    });
+</script>

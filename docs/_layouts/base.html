@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Fontawesome -->
+	<link href="static/lib/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+    <link href="static/lib/fontawesome/css/solid.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script type="application/javascript" src="static/lib/jquery/js/jquery-3.6.0.min.js"></script>
+	
+	<!-- helpers -->
+    <script type="application/javascript" src="static/js/helpers.js"></script>
+
+    <title>{{ page.title }}</title>
+</head>
+<body>
+{% include navbar.html %}
+
+<div class="container-fluid">
+    {{ content }}
+</div>
+</body>
+</html>

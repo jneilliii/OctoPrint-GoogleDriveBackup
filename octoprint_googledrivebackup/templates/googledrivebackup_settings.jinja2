@@ -11,6 +11,7 @@
                 </span>
                 <span class="add-on" data-bind="text: cert_file_name"></span>
             </div>
+            <div class="alert alert-error" data-bind="visible: client_secret_alert().length > 0, html: client_secret_alert"></div>
         </div>
     </div>
     <div class="control-group">
@@ -20,8 +21,8 @@
     </div>
 </form>
 <div class="row-fluid" data-bind="visible: cert_saved() && !cert_authorized()" style="display: none;">
-    <div class="row-fluid">Click the below URL to authorize your client_secrets.json file. Copy/Paste the Authentication Code you receive and then press Authorize.</div>
-    <div class="row-fluid"><a href="#" target="_blank" data-bind="attr: {href: auth_url}, text: auth_url"></a></div>
+    <div class="row-fluid">{{ _('Click the button below to authorize your client_secrets.json file. Copy/Paste the Authentication Code you receive and then press Authorize.') }}</div>
+    <div class="row-fluid"><a href="#" class="btn btn-primary" target="_blank" data-bind="attr: {href: auth_url, title: auth_url}">{{ _('Get Auth Code') }}</a></div>
     <div class="control-group">
         <label class="control-label">{{ _('Auth Code') }}</label>
         <div class="controls">
