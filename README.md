@@ -42,7 +42,7 @@ sudo apt install libssl-dev
 ![screenshot](screenshots/settings_step10.png)
 12.	Click on `Create credentials` and select `OAuth client ID`. <br>
 ![screenshot](screenshots/settings_step11.png)
-13.	Select `Desktop App` for application type and then enter a name (can be anything and does not really matter) and then click `Create`. <br>
+13.	Select `Web application` for application type and then enter a name (can be anything and does not really matter). Fill in the Authorized redirect URIs as `https://jneilliii.github.io/OctoPrint-GoogleDriveBackup/` and then click `Create`. <br>
 ![screenshot](screenshots/settings_step12.png)
 14.	Click `OK` to the confirmation page and then use the download button ![screenshot](screenshots/settings_download.png) to save your client_secrets#####.json file. <br>
 ![screenshot](screenshots/settings_step13.png)
