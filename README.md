@@ -72,7 +72,7 @@ Once the Prerequisite steps above have been completed and you have downloaded yo
 ![screenshot](screenshots/configuration_step6.png)
 7. If everything went well then you will be presented with a successful message. <br>
 ![screenshot](screenshots/configuration_step7.png)
-8. Specify an "Upload Folder" for example "OctoPrint Backups". Using `/` in the name will **not** result in having it in a sub-directory. However, once created you may rename or move that directory to another location on your Drive using the web interface, and new backups will continue to be added to that directory.
+8. Specify an "Upload Folder" for example "OctoPrint Backups". If you create a backup from Settings > Backup & Restore > "Create backup now" it'll create that folder unless it already exists. Using `/` in the name will **not** result in having it in a sub-directory. However, once created you may move that directory to another location on your Drive using the web interface and new backups will continue to be added to that directory.
 
 ## To-Do
 
