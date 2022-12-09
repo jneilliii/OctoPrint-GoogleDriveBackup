@@ -9,6 +9,19 @@ const redirectUri = `${redirectHost}/OctoPrint-GoogleDriveBackup/`;
 
 const isCorrectRedirectUri = (setting) => setting === redirectUri;
 
+const getRedirectUriFeedback = (setting) => {
+    const linkText =
+        '<a target="_blank" href="https://github.com/jneilliii/OctoPrint-GoogleDriveBackup#create-a-google-oauth-app">step 13</a>.';
+    if (setting) {
+        if (!setting.startsWith(redirectHost)) {
+            return `Please use the host '${redirectHost}' for Authorized Redirect URI as specified in ${linkText}`;
+        } else if (!setting.endsWith("/")) {
+            return `Make sure the Authorized Redirect URI ends with a trailing slash as specified in ${linkText}`;
+        }
+    }
+    return `Missing Authorized Redirect URI "${redirectUri}" in <a target="_blank" href="https://github.com/jneilliii/OctoPrint-GoogleDriveBackup#create-a-google-oauth-app">step 13</a>.`;
+};
+
 $(function() {
     function GoogledrivebackupViewModel(parameters) {
         var self = this;
@@ -76,7 +89,7 @@ $(function() {
                     self.authorizing(false);
                     return
 				} else if(!isCorrectRedirectUri(json_data["web"]["redirect_uris"][0])) {
-                    self.client_secret_alert('Missing Authorized Redirect URI "https://jneilliii.github.io/OctoPrint-GoogleDriveBackup/" in <a target="_blank" href="https://github.com/jneilliii/OctoPrint-GoogleDriveBackup#create-a-google-oauth-app">step 13</a>.');
+                    self.client_secret_alert(getRedirectUriFeedback(json_data["web"]["redirect_uris"][0]));
                     self.authorizing(false);
                     return
                 } else {
