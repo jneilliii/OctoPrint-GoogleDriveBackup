@@ -4,6 +4,11 @@
  * Author: jneilliii
  * License: MIT
  */
+const redirectHost = `https://jneilliii.github.io`;
+const redirectUri = `${redirectHost}/OctoPrint-GoogleDriveBackup/`;
+
+const isCorrectRedirectUri = (setting) => setting === redirectUri;
+
 $(function() {
     function GoogledrivebackupViewModel(parameters) {
         var self = this;
@@ -70,7 +75,7 @@ $(function() {
 					self.client_secret_alert('Incorrect oAuth Credential type selected in <a target="_blank" href="https://github.com/jneilliii/OctoPrint-GoogleDriveBackup#create-a-google-oauth-app">step 13</a>.');
                     self.authorizing(false);
                     return
-				} else if(json_data["web"]["redirect_uris"][0] !== 'https://jneilliii.github.io/OctoPrint-GoogleDriveBackup/') {
+				} else if(!isCorrectRedirectUri(json_data["web"]["redirect_uris"][0])) {
                     self.client_secret_alert('Missing Authorized Redirect URI "https://jneilliii.github.io/OctoPrint-GoogleDriveBackup/" in <a target="_blank" href="https://github.com/jneilliii/OctoPrint-GoogleDriveBackup#create-a-google-oauth-app">step 13</a>.');
                     self.authorizing(false);
                     return
