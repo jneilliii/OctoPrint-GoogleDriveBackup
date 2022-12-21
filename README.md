@@ -34,19 +34,23 @@ sudo apt install libssl-dev
 ![screenshot](screenshots/settings_step7.png)
 8.	Select the `External` user type if you do not use Google G Suite, otherwise you can select `Internal` and click `Create`. <br>
 ![screenshot](screenshots/settings_step8.png)
-9.	If you don't publish your app you need to add the user email that you will be using to access Google Drive as a Test User. <br>
-![screenshot](screenshots/settings_step8b.png)
-10.	Click `Save and Continue` on the remaining pages for your consent screen, and then click `Back to Dashboard`. <br>
+9.  Add a user support email and developer contact email, then press `Save and Continue`.<br>
 ![screenshot](screenshots/settings_step9.png)
-11.	In the sidebar on the left (via ![screenshot](screenshots/settings_menu.png)), select **APIs and Services** > **Credentials** again. <br>
+10. No scopes are necessary. Click `Save and Continue`.
 ![screenshot](screenshots/settings_step10.png)
-12.	Click on `Create credentials` and select `OAuth client ID`. <br>
+11.	If you don't publish your app you need to add the user email that you will be using to access Google Drive as a Test User. <br>
 ![screenshot](screenshots/settings_step11.png)
-13.	Select `Web application` for application type and then enter a name (can be anything and does not really matter). Fill in the Authorized redirect URIs as `https://jneilliii.github.io/OctoPrint-GoogleDriveBackup/` and then click `Create`. <br>
+12.	Click `Save and Continue` on the remaining pages for your consent screen, and then click `Back to Dashboard`. <br>
 ![screenshot](screenshots/settings_step12.png)
-14.	Click `OK` to the confirmation page and then use the download button ![screenshot](screenshots/settings_download.png) to save your client_secrets#####.json file. <br>
+13.	In the sidebar on the left (via ![screenshot](screenshots/settings_menu.png)), select **APIs and Services** > **Credentials** again. <br>
 ![screenshot](screenshots/settings_step13.png)
-15.	Use the downloaded client_secrets#####.json file to upload into the plugin’s settings to authorize its access to your Google Drive as described in the Configuration section below.
+14.	Click on `Create credentials` and select `OAuth client ID`. <br>
+![screenshot](screenshots/settings_step14.png)
+15.	Select `Web application` for application type and then enter a name (can be anything and does not really matter). Fill in the Authorized redirect URIs as `https://jneilliii.github.io/OctoPrint-GoogleDriveBackup/` and then click `Create`. <br>
+![screenshot](screenshots/settings_step15.png)
+16.	Click `OK` to the confirmation page and then use the download button ![screenshot](screenshots/settings_download.png) to save your client_secrets#####.json file. <br>
+![screenshot](screenshots/settings_step16.png)
+17.	Use the downloaded client_secrets#####.json file to upload into the plugin’s settings to authorize its access to your Google Drive as described in the Configuration section below.
 
 ## Setup
 
