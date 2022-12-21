@@ -34,11 +34,11 @@ sudo apt install libssl-dev
 ![screenshot](screenshots/settings_step7.png)
 8.	Select the `External` user type if you do not use Google G Suite, otherwise you can select `Internal` and click `Create`. <br>
 ![screenshot](screenshots/settings_step8.png)
-9.  	Add a user support email and developer contact email, then press `Save and Continue`.<br>
+9.  	Add a user support email and developer contact email, then press `Save and Continue`. <br>
 ![screenshot](screenshots/settings_step9.png)
-10. 	No scopes are necessary. Click `Save and Continue`.
+10. 	No scopes are necessary. Click `Save and Continue`. <br>
 ![screenshot](screenshots/settings_step10.png)
-11.	If you don't publish your app you need to add the user email that you will be using to access Google Drive as a Test User. After doing so, press `Save and Continue`.<br>
+11.	If you don't publish your app you need to add the user email that you will be using to access Google Drive as a Test User. After doing so, press `Save and Continue`. <br>
 ![screenshot](screenshots/settings_step11.png)
 12.	Confirm all the information then click `Back to Dashboard`. <br>
 ![screenshot](screenshots/settings_step12.png)
