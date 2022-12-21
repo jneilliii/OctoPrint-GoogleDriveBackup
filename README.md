@@ -48,7 +48,7 @@ sudo apt install libssl-dev
 ![screenshot](screenshots/settings_step14.png)
 15.	Select `Web application` for application type and then enter a name (can be anything and does not really matter). Fill in the Authorized redirect URIs as `https://jneilliii.github.io/OctoPrint-GoogleDriveBackup/` and then click `Create`. <br>
 ![screenshot](screenshots/settings_step15.png)
-16.	Click `OK` to the confirmation page and then use the download button ![screenshot](screenshots/settings_download.png) to save your client_secrets#####.json file. <br>
+16.	In the dialog box that appears, click the download button ![screenshot](screenshots/settings_download.png) to save your client_secrets#####.json file then press `OK`. <br>
 ![screenshot](screenshots/settings_step16.png)
 17.	Use the downloaded client_secrets#####.json file to upload into the plugin’s settings to authorize its access to your Google Drive as described in the Configuration section below.
 
