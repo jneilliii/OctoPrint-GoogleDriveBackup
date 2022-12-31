@@ -60,6 +60,11 @@ $(function() {
 
         $("#googledrivebackup_cert_file").fileupload(certFileuploadOptions);
 
+        $("#googledrivebackup_cert_file").change(() => {
+            // Change in file selection, so we don't know if invalid or not yet
+            self.client_secret_alert('');
+        })
+
         self.onBeforeBinding = function() {
 			self.cert_saved(self.settingsViewModel.settings.plugins.googledrivebackup.cert_saved());
 			self.cert_authorized(self.settingsViewModel.settings.plugins.googledrivebackup.cert_authorized());
