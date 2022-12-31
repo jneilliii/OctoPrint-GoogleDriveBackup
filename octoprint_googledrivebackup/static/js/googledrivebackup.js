@@ -6,12 +6,13 @@
  */
 const redirectHost = `https://jneilliii.github.io`;
 const redirectUri = `${redirectHost}/OctoPrint-GoogleDriveBackup/`;
+const redirectStep = '15'
 
 const isCorrectRedirectUri = (setting) => setting === redirectUri;
 
 const getRedirectUriFeedback = (setting) => {
     const linkText =
-        '<a target="_blank" href="https://github.com/jneilliii/OctoPrint-GoogleDriveBackup#create-a-google-oauth-app">step 13</a>.';
+        `<a target="_blank" href="https://github.com/jneilliii/OctoPrint-GoogleDriveBackup#create-a-google-oauth-app">step ${15}</a>.`;
     if (setting) {
         if (!setting.startsWith(redirectHost)) {
             return `Please use the host '${redirectHost}' for Authorized Redirect URI as specified in ${linkText}`;
@@ -19,7 +20,7 @@ const getRedirectUriFeedback = (setting) => {
             return `Make sure the Authorized Redirect URI ends with a trailing slash as specified in ${linkText}`;
         }
     }
-    return `Missing Authorized Redirect URI "${redirectUri}" in <a target="_blank" href="https://github.com/jneilliii/OctoPrint-GoogleDriveBackup#create-a-google-oauth-app">step 13</a>.`;
+    return `Missing Authorized Redirect URI "${redirectUri}" in ${linkText}`;
 };
 
 $(function() {
