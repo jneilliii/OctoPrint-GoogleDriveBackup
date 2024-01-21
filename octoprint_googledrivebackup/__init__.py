@@ -23,6 +23,7 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 			installed_version=self._plugin_version,
 			strip_timestamp=False,
 			upload_folder="",
+			use_id=False
 		)
 
 	##~~ SimpleApiPlugin mixin
@@ -105,7 +106,10 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 					import re
 					filename = re.sub(r"((-[0-9]+)+\.zip$)", ".zip", filename)
 				if not self._settings.get(["upload_folder"]) == "":
-					folder_id = self.create_remote_folder(drive, self._settings.get(["upload_folder"]))
+					if self._settings.get_boolean(["use_id"]):
+						folder_id = self._settings.get(["upload_folder"])
+					else:
+						folder_id = self.create_remote_folder(drive, self._settings.get(["upload_folder"]))
 				file_list = drive.ListFile({'q': f"title='{filename}' and trashed=false and '{folder_id or 'root'}' in parents"}).GetList()
 				if len(file_list) == 1:
 					f = file_list[0]

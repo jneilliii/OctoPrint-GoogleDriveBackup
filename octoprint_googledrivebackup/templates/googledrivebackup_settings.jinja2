@@ -47,7 +47,7 @@
     <label class="input">{{ _('Upload Folder') }}</label>
     <div class="control-group">
         <div class="controls">
-            <input type="text" data-bind="value: settingsViewModel.settings.plugins.googledrivebackup.upload_folder" />
+            <input class="input-block-level" type="text" data-bind="value: settingsViewModel.settings.plugins.googledrivebackup.upload_folder" /><label class="checkbox">{{ _('Use folder id instead of name') }}<input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.googledrivebackup.use_id" /></label>
         </div>
     </div>
 </div>
