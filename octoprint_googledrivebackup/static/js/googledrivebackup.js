@@ -64,12 +64,12 @@ $(function() {
         $("#googledrivebackup_cert_file").change(() => {
             // Change in file selection, so we don't know if invalid or not yet
             self.client_secret_alert('');
-        })
+        });
 
         self.onBeforeBinding = function() {
 			self.cert_saved(self.settingsViewModel.settings.plugins.googledrivebackup.cert_saved());
 			self.cert_authorized(self.settingsViewModel.settings.plugins.googledrivebackup.cert_authorized());
-		}
+		};
 
         self.uploadCertFile = function(){
             if (self.cert_file_data === undefined) return;
@@ -118,7 +118,7 @@ $(function() {
                     self.authorizing(false);
                 });
             }
-        }
+        };
 
         self.authorizeCertFile = function(){
             if(self.auth_code() === '') return;
@@ -139,12 +139,27 @@ $(function() {
                 self.cert_authorized(false);
                 self.authorizing(false);
             });
-        }
+        };
 
         self.deleteCertFiles = function(){
             self.cert_saved(false);
 			self.cert_authorized(false);
-        }
+        };
+
+        self.onDataUpdaterPluginMessage = function (plugin, data) {
+            if (plugin !== "googledrivebackup") {
+                return;
+            }
+
+            if (data.error) {
+                new PNotify({
+					title: 'Google Drive Backup Error',
+					text: '<div class="row-fluid"><p>There was an error.</p></div><p><pre style="padding-top: 5px;">'+data.error+'</pre></p>',
+					hide: false,
+                    type: 'error'
+				});
+            }
+        };
     }
 
     OCTOPRINT_VIEWMODELS.push({

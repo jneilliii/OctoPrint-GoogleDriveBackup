@@ -13,6 +13,7 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 	##~~ SettingsPlugin mixin
 
 	def __init__(self):
+		super().__init__()
 		self.gauth = None
 
 	def get_settings_defaults(self):
@@ -83,52 +84,63 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 			self._logger.info("{} created, will now attempt to upload to Google Drive".format(payload["path"]))
 			from pydrive2.drive import GoogleDrive
 			from pydrive2.auth import GoogleAuth
-			credentials_file = "{}/credentials.json".format(self.get_plugin_data_folder())
-			folder_id = None
-			gauth = GoogleAuth()
-			gauth.LoadCredentialsFile(credentials_file)
-			if gauth.credentials is None:
-				self._logger.error("not authorized")
-				self._settings.set(["cert_authorized"], False)
-				self._settings.save()
-				return
-			elif gauth.access_token_expired:
-				gauth.Refresh()
-			else:
-				gauth.Authorize()
-			gauth.SaveCredentialsFile(credentials_file)
-			drive = GoogleDrive(gauth)
-			filename = payload["name"]
-			if self._settings.get_boolean(["strip_timestamp"]):
-				import re
-				filename = re.sub(r"((-[0-9]+)+\.zip$)", ".zip", filename)
-			if not self._settings.get(["upload_folder"]) == "":
-				folder_id = self.create_remote_folder(drive, self._settings.get(["upload_folder"]))
-			file_list = drive.ListFile({'q': "title='{}' and trashed=false and '{}' in parents".format(filename, folder_id or "root")}).GetList()
-			if len(file_list) == 1:
-				f = file_list[0]
-			else:
-				file_metadata = {"title": filename}
-				if folder_id:
-					file_metadata["parents"] = [{"id": folder_id}]
-				f = drive.CreateFile(file_metadata)
-			f.SetContentFile(payload["path"])
-			f.Upload()
-			f = None
+			try:
+				credentials_file = "{}/credentials.json".format(self.get_plugin_data_folder())
+				folder_id = None
+				gauth = GoogleAuth()
+				gauth.LoadCredentialsFile(credentials_file)
+				if gauth.credentials is None:
+					self._logger.error("not authorized")
+					self._settings.set(["cert_authorized"], False)
+					self._settings.save()
+					return
+				elif gauth.access_token_expired:
+					gauth.Refresh()
+				else:
+					gauth.Authorize()
+				gauth.SaveCredentialsFile(credentials_file)
+				drive = GoogleDrive(gauth)
+				filename = payload["name"]
+				if self._settings.get_boolean(["strip_timestamp"]):
+					import re
+					filename = re.sub(r"((-[0-9]+)+\.zip$)", ".zip", filename)
+				if not self._settings.get(["upload_folder"]) == "":
+					folder_id = self.create_remote_folder(drive, self._settings.get(["upload_folder"]))
+				file_list = drive.ListFile({'q': f"title='{filename}' and trashed=false and '{folder_id or 'root'}' in parents"}).GetList()
+				if len(file_list) == 1:
+					f = file_list[0]
+				else:
+					file_metadata = {"title": filename}
+					if folder_id:
+						file_metadata["parents"] = [{"id": folder_id}]
+					f = drive.CreateFile(file_metadata)
+				f.SetContentFile(payload["path"])
+				f.Upload()
+				f = None
+			except Exception as e:
+				self._plugin_manager.send_plugin_message(self._identifier, {"error": str(e)})
 
 	def create_remote_folder(self, drive, folder_name):
-		folder_list = (drive.ListFile({'q': "mimeType='application/vnd.google-apps.folder' and trashed=false and title='{}'".format(folder_name)}).GetList())
+		last_id = None
+		temp = folder_name.split("/")
+		for item in temp:
+			lookup = (drive.ListFile({'q': f"mimeType='application/vnd.google-apps.folder' and trashed=false and title='{item}' and '{last_id or 'root'}' in parents"}).GetList())
 
-		if len(folder_list) == 1:
-			return folder_list[0]["id"]
+			if len(lookup) > 0:
+				last_id = lookup[0]["id"]
+			else:
+				file_metadata = {
+					"title": item,
+					"mimeType": "application/vnd.google-apps.folder"
+				}
 
-		file_metadata = {
-			"title": folder_name,
-			"mimeType": "application/vnd.google-apps.folder"
-		}
-		file0 = drive.CreateFile(file_metadata)
-		file0.Upload()
-		return file0["id"]
+				if last_id:
+					file_metadata["parents"] = [{"id": last_id}]
+
+				file0 = drive.CreateFile(file_metadata)
+				file0.Upload()
+				last_id = file0["id"]
+		return last_id
 
 	##~~ Softwareupdate hook
 
