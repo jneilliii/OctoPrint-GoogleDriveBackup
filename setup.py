@@ -14,7 +14,7 @@ plugin_package = "octoprint_googledrivebackup"
 plugin_name = "Google Drive Backup"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
-plugin_version = "0.1.3"
+plugin_version = "0.1.4"
 
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
@@ -33,7 +33,7 @@ plugin_url = "https://github.com/jneilliii/OctoPrint-GoogleDriveBackup"
 plugin_license = "MIT"
 
 # Any additional requirements besides OctoPrint should be listed here
-plugin_requires = ["cryptography>=38.0.0,<40", "pydrive2"]
+plugin_requires = ["cryptography>=38.0.0,<40", "httplib2<0.30.0", "pydrive2"]
 
 ### --------------------------------------------------------------------------------------------------------------------
 ### More advanced options that you usually shouldn't have to touch follow after this point
