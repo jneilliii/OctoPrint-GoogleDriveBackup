@@ -2,6 +2,8 @@
 from __future__ import absolute_import
 
 import octoprint.plugin
+from octoprint.access.permissions import Permissions
+import flask
 
 
 class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
@@ -26,15 +28,21 @@ class GoogledrivebackupPlugin(octoprint.plugin.SettingsPlugin,
 			use_id=False
 		)
 
+	##~~ TemplatePlugin mixin
+
+	def is_template_autoescaped(self):
+		return True
+
 	##~~ SimpleApiPlugin mixin
+
+	def is_api_protected(self):
+		return True
 
 	def get_api_commands(self):
 		return dict(gen_secret=["json_data"], authorize=["auth_code"])
 
 	def on_api_command(self, command, data):
-		from octoprint.server import user_permission
-		import flask
-		if not user_permission.can():
+		if not hasattr(Permissions, "PLUGIN_BACKUP_CREATE") or not Permissions.PLUGIN_BACKUP_CREATE.can():
 			return flask.make_response("Insufficient rights", 403)
 
 		from pydrive2.auth import GoogleAuth

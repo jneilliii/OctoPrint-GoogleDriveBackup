@@ -1,0 +1,46 @@
+[build-system]
+requires = [
+    "setuptools>=68",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Google-Drive-Backup"
+version = "0.1.5"
+description = "This plugin will automatically save a copy of your OctoPrint backup to Google Drive upon completion."
+authors = [
+    { name = "jneilliii", email = "jneilliii+github@gmail.com" },
+]
+requires-python = ">=3.7,<4"
+dependencies = [
+    "cryptography>=38.0.0,<40",
+    "httplib2<0.30.0",
+    "pydrive2",
+]
+dynamic = [
+    "license",
+]
+
+[project.entry-points."octoprint.plugin"]
+googledrivebackup = "octoprint_googledrivebackup"
+
+[project.urls]
+Homepage = "https://github.com/jneilliii/OctoPrint-GoogleDriveBackup"
+
+[project.optional-dependencies]
+develop = [
+    "go-task-bin",
+]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = [
+    "octoprint_googledrivebackup",
+    "octoprint_googledrivebackup.*",
+]

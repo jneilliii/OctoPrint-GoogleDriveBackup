@@ -154,7 +154,7 @@ $(function() {
             if (data.error) {
                 new PNotify({
 					title: 'Google Drive Backup Error',
-					text: '<div class="row-fluid"><p>There was an error.</p></div><p><pre style="padding-top: 5px;">'+data.error+'</pre></p>',
+					text: '<div class="row-fluid"><p>There was an error.</p></div><p><pre style="padding-top: 5px;">' + _.escape(data.error) + '</pre></p>',
 					hide: false,
                     type: 'error'
 				});
